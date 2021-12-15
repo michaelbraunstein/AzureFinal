@@ -1,7 +1,7 @@
 function testfun(){
 const date = new Date(Date.now());
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-axios.post('https://prod-74.eastus.logic.azure.com:443/workflows/c10c14e05ec44366a5ae4e9d89270845/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=T14cQAso1_Od0w7xWSQXF69NK5mNCC1UFjNGP6-Xtb0', {
+let x = axios.post('https://prod-74.eastus.logic.azure.com:443/workflows/c10c14e05ec44366a5ae4e9d89270845/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=T14cQAso1_Od0w7xWSQXF69NK5mNCC1UFjNGP6-Xtb0', {
     id: self.crypto.randomUUID(),
     month: months[date.getMonth()],
     day: date.getDate(),
@@ -12,7 +12,7 @@ axios.post('https://prod-74.eastus.logic.azure.com:443/workflows/c10c14e05ec4436
   })
   .then(function (response) {
     console.log(response);
-  })
-  .catch(function (error) {
-    console.log(error);
+    return response.data
   });}
+
+console.log(x);
